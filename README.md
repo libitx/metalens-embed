@@ -2,6 +2,19 @@
 
 A simple JavaScript wrapper to embed Metalens comments into any web page.
 
+## Getting started
+
+Include the JavaScript on your page, either by downloading the file from this repo, or be referencing the `b://` or `c://` URI within metanet.
+
+```html
+<script src="/dist/metalens-embed.js"></script>
+```
+
+```text
+b://9bbe7e5f867d1830477e126de632734c7d9c82ee384eca9f5a771df14c316940
+c://3d704672869a539b1ef3c1658d04a4d50423a92a4f5813c3f31b35b3b5ea781c
+```
+
 ## Simple usage
 
 On page load, any elements with the class `.metalens-embed` will automatically be embedded with Metalens comments.
@@ -28,3 +41,7 @@ metalens.embed('.comments', {
   height: '600px'
 })
 ```
+
+## Todo
+
+* [ ] Automatic iframe resizing
