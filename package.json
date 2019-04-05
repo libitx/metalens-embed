@@ -1,0 +1,17 @@
+{
+  "name": "metalens-embed",
+  "version": "0.0.1",
+  "description": "A simple JavaScript wrapper to embed Metalens comments into any web page.",
+  "main": "src/metalens-embed.js",
+  "author": "libitx",
+  "license": "MIT",
+  "scripts": {
+    "build": "NODE_ENV=production babel src --out-dir dist && babel src --out-file dist/metalens-embed.min.js --presets minify"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.4.3",
+    "@babel/core": "^7.4.3",
+    "@babel/preset-env": "^7.4.3",
+    "babel-preset-minify": "^0.5.0"
+  }
+}
