@@ -1,6 +1,6 @@
 {
   "name": "metalens-embed",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A simple JavaScript wrapper to embed Metalens comments into any web page.",
   "main": "src/metalens-embed.js",
   "author": "libitx",

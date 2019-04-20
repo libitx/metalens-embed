@@ -1,5 +1,5 @@
 const metalens = (_ => {
-  const baseUrl = 'https://metalens.allaboard.cash/';
+  const baseUrl = 'https://metalens.allaboard.cash';
 
   const meta = document.querySelector('meta[name="bitcoin-tx"]'),
         txid = meta ? meta.getAttribute('content') : null;
@@ -8,41 +8,56 @@ const metalens = (_ => {
         url = canonical ? canonical.getAttribute('href') : window.location.href;
 
   return {
-    options: {
+    defaults: {
       txid,
       url,
 
+      autoSize: true,
       width: '100%',
-      height: '400px',
+      height: '600px',
     },
-
-    $el: null,
-    $iframe: null,
 
     embed(el, opts) {
-      this.$el = !!el.nodeName ? el : document.querySelector(el);
+      const $el = !!el.nodeName ? el : document.querySelector(el);
+      if ( !$el ) return false;
 
-      if ( !this.$el ) return false;
+      const $iframe = document.createElement('iframe'),
+            options = Object.assign({}, this.defaults, $el.dataset, opts),
+            href    = baseUrl + ( options.txid ?
+              `/tx/${ options.txid }` :
+              `/url/${ encodeURIComponent(options.url) }` );
 
-      Object.assign(this.options, this.$el.dataset, opts)
+      options.autoSize = JSON.parse(options.autoSize);
 
-      this.$iframe        = document.createElement('iframe');
-      this.$iframe.src    = baseUrl + (
-        this.options.txid ?
-        `tx/${ this.options.txid }` :
-        `url/${ encodeURIComponent(this.options.url) }`
-      );
-      this.$iframe.width  = this.options.width;
-      this.$iframe.height = this.options.height;
-      this.$iframe.setAttribute('frameborder', 0);
-      this.$iframe.setAttribute('allowtransparency', true);
+      $iframe.src     = href;
+      $iframe.width   = options.width;
+      $iframe.height  = options.height;
+      $iframe.setAttribute('frameborder', 0);
 
-      this.$el.innerHTML = this.$iframe.outerHTML;
-    },
+      const embedded = {
+        $el,
+        $iframe,
 
-    resize({ width, height }) {
-      if (width)  this.$iframe.width  = width;
-      if (height) this.$iframe.height = height;
+        resize({ width, height }) {
+          if (width)  this.$iframe.width  = `${ width }px`;
+          if (height) this.$iframe.height = `${ height }px`;
+        },
+
+        handleMessage(e) {
+          //console.log('🔍', e)
+          if (e.origin === baseUrl && e.data.href === href) {
+            if (options.autoSize && e.data.height) {
+              this.resize({ height: e.data.height })
+            }
+          }
+        }
+      }
+
+      $el.innerHTML = '';
+      $el.appendChild($iframe);
+      window.addEventListener('message', e => embedded.handleMessage(e), false);
+
+      return embedded;
     }
   }
 })()

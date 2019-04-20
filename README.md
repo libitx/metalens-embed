@@ -26,8 +26,7 @@ Data attributes can also be used to define options.
 ```html
 <div class="metalens-embed"
   data-url="http://www.example.com"
-  data-txid="abcdef..."
-  data-height="600px" />
+  data-auto-size="true" />
 ```
 
 ## Custom usage
@@ -36,12 +35,19 @@ Using JavaScript, the `metalens.embed()` function can be used to embed Metalens 
 
 ```javascript
 metalens.embed('.comments', {
-  url: 'http://www.example.com',
   txid: 'abcdef...',
-  height: '600px'
+  autoSize: true
 })
 ```
 
-## Todo
+## Options
+
+Options can either be defined on the element as data attributes, or passed to `metalens.embed()` as an options hash.
+
+* `url` - Topic identifier - full URL of topic
+* `txid` - Topic identifier - Bitcoin transaction ID
+* `autoSize` - Automatically resize the height of the Metalens iframe *(default **true**)*
+* `height` - the initial height of the Metalens iframe *(default **600px**)*
+* `width` - the initial width of the Metalens iframe *(default **100%**)*
 
 * [ ] Automatic iframe resizing
