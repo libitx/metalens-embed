@@ -4,7 +4,7 @@ A simple JavaScript wrapper to embed Metalens comments into any web page.
 
 ## Getting started
 
-Include the JavaScript on your page, either by downloading the file from this repo, or be referencing the `b://` or `c://` URI within metanet.
+Include the JavaScript on your page, either by downloading the file from this repo, or by referencing the `b://` or `c://` URI within metanet.
 
 ```html
 <script src="/dist/metalens-embed.js"></script>
