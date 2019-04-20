@@ -11,8 +11,8 @@ Include the JavaScript on your page, either by downloading the file from this re
 ```
 
 ```text
-b://9bbe7e5f867d1830477e126de632734c7d9c82ee384eca9f5a771df14c316940
-c://3d704672869a539b1ef3c1658d04a4d50423a92a4f5813c3f31b35b3b5ea781c
+b://eef50f99725cb8b43371a6998f22754cdffcf7f21d8087ef9f80630786f909bf
+c://deb76a74d95145597dace26b0067488b24f48f2b5a57286aac9a379d4eaa3646
 ```
 
 ## Simple usage
