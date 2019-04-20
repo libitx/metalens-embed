@@ -49,5 +49,3 @@ Options can either be defined on the element as data attributes, or passed to `m
 * `autoSize` - Automatically resize the height of the Metalens iframe *(default **true**)*
 * `height` - the initial height of the Metalens iframe *(default **600px**)*
 * `width` - the initial width of the Metalens iframe *(default **100%**)*
-
-* [ ] Automatic iframe resizing
